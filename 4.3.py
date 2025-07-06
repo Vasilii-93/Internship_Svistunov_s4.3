@@ -142,5 +142,5 @@ with open(file_name, "w") as file:
 archived_users.insert_many(archiving_users)
 
 #Удаляем пользователей из основной коллекции
-collection.delete_many({"user_info.registration_date": {"$lt": one_month_ago}, "event_time": {"$lt": fourteen_days_ago} })
+collection.delete_many({"user_id": {"$in": archiving_users_ids}})
 
